@@ -1,0 +1,10 @@
+{% extends "base/base.html" %}
+{% block content %}
+    <form action="" method="post">
+        {% csrf_token %}
+            <h3>¿:Quieres borrar el Task"{{ object }}"?</h3>
+            
+            <button type="submit" class="btn btn-outline-danger">Borrar Task</button>
+            <a href="{% url 'tareas' %}" class="btn btn-outline-warning">Cancel</a>
+    </form>
+{% endblock content %}

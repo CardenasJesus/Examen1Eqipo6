@@ -1,0 +1,39 @@
+{% extends "base/base.html" %}
+{% block title %} Task List {% endblock title %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <a href="{% url 'NewTask' %}" class="btn btn-outline-success form-control">New Task</a>
+        </div>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Task Name</th>
+                <th>Description</th>
+                <th>Usuario</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for tareas in tarea %}
+            <tr>
+                <td>{{ tareas.id }}</td>
+                <td>{{ tareas.nombre }}</td>
+                <td>{{ tareas.descripcion}}</td>
+                <td>{{  tareas.UserE_id}}</td>
+                <td>{{ tareas.status }}</td>
+                <td>
+                    <a href="{% url 'update' tareas.id %}" class="btn btn-outline-warning">Update</a>
+                    <a href="{% url 'DeleteTask' tareas.id %}" class="btn btn-outline-danger">Delete</a>
+                </td>
+            </tr>
+            {% empty %}
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
